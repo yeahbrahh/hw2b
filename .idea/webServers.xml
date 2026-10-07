@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="7544dc48-bfc3-49d9-9b46-ec29204e9716" name="hw2b">
+        <fileTransfer rootFolder="/s/bach/m/under/C836701958/cs370" accessType="SFTP" host="honolulu.cs.colostate.edu" port="22" sshConfigId="4faee160-d768-455a-8878-768e29ed1eab" sshConfig="C836701958@honolulu.cs.colostate.edu:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" isUseRsync="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

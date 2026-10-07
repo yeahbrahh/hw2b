@@ -5,7 +5,8 @@
 #include <stdlib.h>
 #include  <unistd.h>
 #include  <stdbool.h>
-#include <sys/types.h>
+#include <sys/ipc.h>
+#include <sys/shm.h>
 #include "Checker.h"
 
 bool is_divisible(const int argOne, const int argTwo) {
@@ -13,11 +14,22 @@ bool is_divisible(const int argOne, const int argTwo) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc != 3) {
+    if (argc != 4) {
         printf("Incorrect number of arguments\n Expected: 3\n Actual: %i\n", argc);
     }
+    const int shared_memory_id = 0;
+    int *shared_memory_ptr = shmat(shared_memory_id, NULL, 0);
+
+    *shared_memory_ptr = 1;
+    shmdt(shared_memory_ptr);
+
+    const int fd = atoi(argv[0]);
     const int argOne = atoi(argv[1]);
     const int argTwo = atoi(argv[2]);
+
+    int args[2] = {argOne, argTwo};
+
+    read(fd, &args, sizeof(args));
 
     pid_t pid = getpid();
     printf("Checker process [%i]: Starting.\n", (int) pid);
